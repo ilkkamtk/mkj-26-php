@@ -10,11 +10,13 @@
 <body>
 
 <?php
-if (isset($_POST['username']) && isset($_POST['remember'])) {
-    setcookie('username', $_POST['username'], 0, '', '', true, true);
-    header('Location: ' .  $_SERVER['PHP_SELF']);
-} else {
-    setcookie('username', '', time() - 3600);
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['username']) && isset($_POST['remember'])) {
+        setcookie('username', $_POST['username'], 0, '', '', true, true);
+    } else {
+        setcookie('username', '', time() - 3600);
+    }
+    header('Location: ' . $_SERVER['PHP_SELF']);
 }
 ?>
 
