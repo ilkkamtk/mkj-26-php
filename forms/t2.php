@@ -12,6 +12,7 @@
 <?php
 if (isset($_POST['username']) && isset($_POST['remember'])) {
     setcookie('username', $_POST['username'], 0, '', '', true, true);
+    header('Location: ' .  $_SERVER['PHP_SELF']);
 } else {
     setcookie('username', '', time() - 3600);
 }
@@ -20,11 +21,11 @@ if (isset($_POST['username']) && isset($_POST['remember'])) {
 <div>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <label for="username">Username</label>
-        <input name="username" id="username" value="<?php if(isset( $_COOKIE['username'])) echo $_COOKIE['username']; ?>">
+        <input name="username" id="username" value="<?php echo $_COOKIE['username'] ?? ''; ?>">
 
         <label>
             Remember me
-            <input type="checkbox" name="remember">
+            <input type="checkbox" name="remember" <?php echo isset($_COOKIE['username']) ? 'checked': ''; ?>>
         </label>
 
         <button type="submit">Send</button>
