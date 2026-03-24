@@ -1,15 +1,40 @@
+<?php
+require_once __DIR__ . '/../db/dbConnect.php';
+global $DBH;
+?>
+
 <section id="media-items">
     <table>
         <thead>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Created</th>
-        <th>Owner</th>
-        <th>Thumbnail</th>
-        <th>Operations</th>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created</th>
+            <th>Owner</th>
+            <th>Thumbnail</th>
+            <th>Operations</th>
+        </tr>
         </thead>
         <tbody>
-
+        <?php
+        $sql = 'SELECT * FROM MediaItems;';
+        try {
+            $STH = $DBH->prepare($sql);
+            $STH->execute();
+            $STH->setFetchMode(PDO::FETCH_ASSOC);
+            while ($row = $STH->fetch()) {
+                echo '<tr>';
+                echo '<td>' . $row['title'] . '</td>';
+                echo '<td>' . $row['description'] . '</td>';
+                echo '<td>' . $row['created_at'] . '</td>';
+                echo '<td>' . $row['user_id'] . '</td>';
+                echo '<td>' . $row['filename'] . '</td>';
+                echo '<td>Modify / Delete</td>';
+                echo '</tr>';
+            }
+        } catch (PDOException $error) {
+        }
+        ?>
         </tbody>
     </table>
 </section>
