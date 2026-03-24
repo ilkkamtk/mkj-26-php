@@ -9,21 +9,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<?php
+include('./inc/header.php');
+?>
 
 <div>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <label for="username">Username</label>
-        <input name="username" id="username" value="<?php echo $_COOKIE['username'] ?? ''; ?>">
+        <input name="username" id="username" value="<?= $_COOKIE['username'] ?? ''; ?>">
 
         <label>
             Remember me
@@ -34,5 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </div>
 
-</body>
-</html>
+<?php
+include('./inc/footer.php');
+?>
+
