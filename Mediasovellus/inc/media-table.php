@@ -17,7 +17,7 @@ global $DBH;
         </thead>
         <tbody>
         <?php
-        $sql = 'SELECT * FROM MediaItems;';
+        $sql = 'SELECT MediaItems.*, Users.username FROM MediaItems JOIN Users On Users.user_id = MediaItems.user_id;';
         try {
             $STH = $DBH->prepare($sql);
             $STH->execute();
@@ -27,7 +27,7 @@ global $DBH;
                 echo '<td>' . $row['title'] . '</td>';
                 echo '<td>' . $row['description'] . '</td>';
                 echo '<td>' . $row['created_at'] . '</td>';
-                echo '<td>' . $row['user_id'] . '</td>';
+                echo '<td>' . $row['username'] . '</td>';
                 echo '<td>' . $row['filename'] . '</td>';
                 echo '<td>Modify / Delete</td>';
                 echo '</tr>';
