@@ -22,7 +22,7 @@ if(!empty($_POST['title']) || !empty($_POST['description'])) {
         header('Location: ' . SITE_URL);
     } catch (PDOException $e) {
         echo "Could not insert data into the database.";
-        file_put_contents('PDOErrors.txt', 'insertData.php - ' . $e->getMessage(), FILE_APPEND);
+        file_put_contents(__DIR__ . '/../logs/PDOErrors.log', 'insertData.php - ' . $e->getMessage() . "\n", FILE_APPEND);
     }
 
 } else {

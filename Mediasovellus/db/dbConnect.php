@@ -13,6 +13,6 @@ try {
     $DBH->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 } catch(PDOException $e) {
     echo "Could not connect to database.";
-    file_put_contents('PDOErrors.log', 'dbConnect.php - ' . $e->getMessage() . "\n", FILE_APPEND);
+    file_put_contents(__DIR__ . '/../logs/PDOErrors.log', 'dbConnect.php - ' . $e->getMessage() . "\n", FILE_APPEND);
 }
 ?>
