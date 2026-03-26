@@ -1,5 +1,5 @@
 <section>
-    <form>
+    <form method="post" action="./operations/insertData.php">
         <div class="form-control">
             <label for="title">Title: </label>
             <input type="text" name="title" id="title">

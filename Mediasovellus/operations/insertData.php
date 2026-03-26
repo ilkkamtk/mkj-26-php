@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../db/dbConnect.php';
 global $DBH;
 
@@ -17,6 +18,7 @@ $data = [
 try {
     $STH = $DBH->prepare($sql);
     $STH->execute($data);
+    header('Location: ' . SITE_URL);
 } catch (PDOException $e) {
     echo "Could not insert data into the database.";
     file_put_contents('PDOErrors.txt', 'insertData.php - ' . $e->getMessage(), FILE_APPEND);
