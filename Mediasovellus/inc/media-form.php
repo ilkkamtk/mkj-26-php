@@ -8,5 +8,10 @@
             <label for="description">Description: </label>
             <input type="text" name="description" id="description">
         </div>
+        <div class="form-control">
+            <button type="submit">
+                Send
+            </button>
+        </div>
     </form>
 </section>
