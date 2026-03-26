@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../db/dbConnect.php';
+require_once __DIR__ . '/../config/config.php';
 global $DBH;
 ?>
 
@@ -29,7 +30,7 @@ global $DBH;
                 echo '<td>' . $row['created_at'] . '</td>';
                 echo '<td>' . $row['username'] . '</td>';
                 echo '<td>' . $row['filename'] . '</td>';
-                echo '<td>Modify / Delete</td>';
+                echo '<td><a href="' . SITE_URL . '?operation=modify">Modify</a> / Delete</td>';
                 echo '</tr>';
             }
         } catch (PDOException $error) {
