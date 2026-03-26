@@ -1,6 +1,10 @@
+<?php
+require_once __DIR__ . '/../config/config.php';
+?>
+
 <section>
     <h3>Update media item</h3>
-    <form method="post" action="./operations/updateData.php">
+    <form method="post" action="<?php echo SITE_URL; ?>/operations/updateData.php">
         <input type="hidden" name="media_id" value="1341324">
         <div class="form-control">
             <label for="title">Title: </label>
@@ -14,6 +18,7 @@
             <button type="submit">
                 Send
             </button>
+            <a href="<?php echo SITE_URL; ?>">Cancel</a>
         </div>
     </form>
 </section>
