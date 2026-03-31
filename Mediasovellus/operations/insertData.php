@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../db/dbConnect.php';
 global $DBH;
@@ -21,7 +22,7 @@ if(!empty($_POST['title']) || !empty($_POST['description']) || $_FILES['file']['
     $data = [
         'title' => $_POST['title'],
         'description' => $_POST['description'],
-        'user_id' => 1,
+        'user_id' => $_SESSION['user']['user_id'],
         'filename' => $filename,
         'filesize' => $_FILES['file']['size'],
         'media_type' => $_FILES['file']['type'],
