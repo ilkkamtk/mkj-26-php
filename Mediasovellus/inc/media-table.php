@@ -30,7 +30,9 @@ global $DBH;
                 echo '<td>' . $row['created_at'] . '</td>';
                 echo '<td>' . $row['username'] . '</td>';
                 echo '<td><img src="' . SITE_URL . 'uploads/' . $row['filename'] . '"></td>';
-                echo '<td><a href="' . SITE_URL . '?operation=modify&media_id=' . $row['media_id'] . '">Modify</a> / Delete</td>';
+                echo '<td>';
+                echo '<a href="' . SITE_URL . '?operation=modify&media_id=' . $row['media_id'] . '">Modify</a></td>';
+                echo '<a href="' . SITE_URL . '?operation=delete&media_id=' . $row['media_id'] . '">Delete</a></td>';
                 echo '</tr>';
             }
         } catch (PDOException $error) {
