@@ -31,8 +31,11 @@ global $DBH;
                 echo '<td>' . $row['username'] . '</td>';
                 echo '<td><img src="' . SITE_URL . 'uploads/' . $row['filename'] . '"></td>';
                 echo '<td>';
-                echo '<a href="' . SITE_URL . '?operation=modify&media_id=' . $row['media_id'] . '">Modify</a>';
-                echo '<a href="' . SITE_URL . '?operation=delete&media_id=' . $row['media_id'] . '">Delete</a>';
+                if($row['user_id'] === $_SESSION['user']['user_id'] || $_SESSION['user']['user_level_id'] === 1):
+                    echo '<a href="' . SITE_URL . '?operation=modify&media_id=' . $row['media_id'] . '">Modify</a>';
+                    echo ' / ';
+                    echo '<a href="' . SITE_URL . '?operation=delete&media_id=' . $row['media_id'] . '">Delete</a>';
+                endif;
                 echo '</td>';
                 echo '</tr>';
             }
