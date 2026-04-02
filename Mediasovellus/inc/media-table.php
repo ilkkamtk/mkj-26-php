@@ -26,7 +26,7 @@ global $DBH;
             while ($row = $STH->fetch()) {
                 echo '<tr>';
                 echo '<td>' . $row['title'] . '</td>';
-                echo '<td>' . $row['description'] . '</td>';
+                echo '<td>' . htmlspecialchars($row['description']) . '</td>';
                 echo '<td>' . $row['created_at'] . '</td>';
                 echo '<td>' . $row['username'] . '</td>';
                 echo '<td><img src="' . SITE_URL . 'uploads/' . $row['filename'] . '"></td>';
